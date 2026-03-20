@@ -1,18 +1,24 @@
 import java.util.*;
 
-public class TrainConsistApp {
-
+public class TrainConsistManagementApp {
     public static void main(String[] args) {
 
-        // Welcome message
         System.out.println("=== Train Consist Management App ===");
 
-        // Initialize empty train consist
-        List<String> bogies = new ArrayList<>();
+        ArrayList<String> passengerBogies = new ArrayList<>();
 
-        // Display initial bogie count
-        System.out.println("Initial bogie count: " + bogies.size());
+        passengerBogies.add("Sleeper");
+        passengerBogies.add("AC Chair");
+        passengerBogies.add("First Class");
 
-        // Program continues...
+        System.out.println("Passenger bogies after addition: " + passengerBogies);
+
+        passengerBogies.remove("AC Chair");
+        System.out.println("Passenger bogies after removal: " + passengerBogies);
+
+        boolean exists = passengerBogies.contains("Sleeper");
+        System.out.println("Does Sleeper exist? " + exists);
+
+        System.out.println("Final passenger bogie list: " + passengerBogies);
     }
 }
