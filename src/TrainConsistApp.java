@@ -13,17 +13,13 @@ public class TrainConsistApp {
         bogies.add(new Bogie("Sleeper", 72));
         bogies.add(new Bogie("AC Chair", 56));
         bogies.add(new Bogie("First Class", 24));
-        bogies.add(new Bogie("Sleeper", 70)); // duplicate type for grouping
 
-        // UC9: Group bogies by name/type
-        Map<String, List<Bogie>> grouped = bogies.stream()
-                .collect(Collectors.groupingBy(b -> b.name));
+        // UC10: Calculate total seats using reduce
+        int totalSeats = bogies.stream()
+                .map(b -> b.capacity)
+                .reduce(0, Integer::sum);
 
-        // Display grouped result
-        System.out.println("\nGrouped Bogies:");
-
-        for (String key : grouped.keySet()) {
-            System.out.println(key + " -> " + grouped.get(key));
-        }
+        // Display result
+        System.out.println("\nTotal Seating Capacity: " + totalSeats);
     }
 }
