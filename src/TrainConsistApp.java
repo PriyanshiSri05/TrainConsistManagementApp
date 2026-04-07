@@ -4,35 +4,26 @@ public class TrainConsistApp {
 
     public static void main(String[] args) {
 
-        System.out.println("=== Binary Search for Bogie ID ===");
+        System.out.println("=== Search with Validation ===");
 
-        String[] bogieIds = {"BG101", "BG205", "BG309", "BG412", "BG550"};
-
-        // Ensure sorted (important)
-        Arrays.sort(bogieIds);
+        String[] bogieIds = {}; // Empty array (test case)
 
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter Bogie ID to search: ");
         String key = sc.nextLine();
 
-        int low = 0;
-        int high = bogieIds.length - 1;
+        // 🔥 UC20: Fail-fast check
+        if (bogieIds.length == 0) {
+            throw new IllegalStateException("No bogies available for search!");
+        }
+
+        // Linear search (only runs if valid)
         boolean found = false;
 
-        // Binary Search
-        while (low <= high) {
-
-            int mid = (low + high) / 2;
-
-            int result = key.compareTo(bogieIds[mid]);
-
-            if (result == 0) {
+        for (String id : bogieIds) {
+            if (id.equals(key)) {
                 found = true;
                 break;
-            } else if (result < 0) {
-                high = mid - 1;
-            } else {
-                low = mid + 1;
             }
         }
 
