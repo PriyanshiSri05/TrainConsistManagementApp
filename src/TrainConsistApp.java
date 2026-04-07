@@ -4,22 +4,35 @@ public class TrainConsistApp {
 
     public static void main(String[] args) {
 
-        System.out.println("=== Linear Search for Bogie ID ===");
+        System.out.println("=== Binary Search for Bogie ID ===");
 
         String[] bogieIds = {"BG101", "BG205", "BG309", "BG412", "BG550"};
 
-        Scanner sc = new Scanner(System.in);
+        // Ensure sorted (important)
+        Arrays.sort(bogieIds);
 
+        Scanner sc = new Scanner(System.in);
         System.out.print("Enter Bogie ID to search: ");
         String key = sc.nextLine();
 
+        int low = 0;
+        int high = bogieIds.length - 1;
         boolean found = false;
 
-        // Linear Search
-        for (String id : bogieIds) {
-            if (id.equals(key)) {
+        // Binary Search
+        while (low <= high) {
+
+            int mid = (low + high) / 2;
+
+            int result = key.compareTo(bogieIds[mid]);
+
+            if (result == 0) {
                 found = true;
                 break;
+            } else if (result < 0) {
+                high = mid - 1;
+            } else {
+                low = mid + 1;
             }
         }
 
