@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.stream.*;
 
 public class TrainConsistApp {
 
@@ -12,16 +13,17 @@ public class TrainConsistApp {
         bogies.add(new Bogie("Sleeper", 72));
         bogies.add(new Bogie("AC Chair", 56));
         bogies.add(new Bogie("First Class", 24));
+        bogies.add(new Bogie("Sleeper", 70)); // duplicate type for grouping
 
-        // UC8: Filter using Stream API
-        List<Bogie> filteredBogies = bogies.stream()
-                .filter(b -> b.capacity > 60)
-                .toList();
+        // UC9: Group bogies by name/type
+        Map<String, List<Bogie>> grouped = bogies.stream()
+                .collect(Collectors.groupingBy(b -> b.name));
 
-        // Display filtered bogies
-        System.out.println("\nFiltered Bogies (capacity > 60):");
-        for (Bogie b : filteredBogies) {
-            System.out.println(b);
+        // Display grouped result
+        System.out.println("\nGrouped Bogies:");
+
+        for (String key : grouped.keySet()) {
+            System.out.println(key + " -> " + grouped.get(key));
         }
     }
 }
