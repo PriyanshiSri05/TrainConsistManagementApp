@@ -21,6 +21,7 @@ public class TrainConsistApp {
         System.out.println("\nSorted Bogies by Capacity:");
         for (Bogie b : bogies) {
             System.out.println(b);
+            System.out.println("UC7 Running...");
         }
     }
 }
