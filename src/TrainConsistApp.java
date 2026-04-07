@@ -2,17 +2,18 @@ public class TrainConsistApp {
 
     public static void main(String[] args) {
 
-        System.out.println("=== Train Consist Management App ===");
+        System.out.println("=== Cargo Assignment System ===");
 
-        try {
-            Bogie b1 = new Bogie("Sleeper", 72);
-            Bogie b2 = new Bogie("AC Chair", -10); // ❌ invalid
+        GoodsBogie b1 = new GoodsBogie("Cylindrical");
+        GoodsBogie b2 = new GoodsBogie("Rectangular");
 
-            System.out.println(b1);
-            System.out.println(b2);
+        // Safe assignment
+        b1.assignCargo("Petroleum");
 
-        } catch (InvalidCapacityException e) {
-            System.out.println("Error: " + e.getMessage());
-        }
+        // Unsafe assignment
+        b2.assignCargo("Petroleum");
+
+        // Program continues
+        System.out.println("\nProgram continues safely...");
     }
 }
