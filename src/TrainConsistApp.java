@@ -4,21 +4,30 @@ public class TrainConsistApp {
 
     public static void main(String[] args) {
 
-        System.out.println("=== Sort Bogie Names ===");
+        System.out.println("=== Linear Search for Bogie ID ===");
 
-        String[] bogieNames = {
-                "Sleeper",
-                "AC Chair",
-                "First Class",
-                "General",
-                "Luxury"
-        };
+        String[] bogieIds = {"BG101", "BG205", "BG309", "BG412", "BG550"};
 
-        // Sorting using built-in method
-        Arrays.sort(bogieNames);
+        Scanner sc = new Scanner(System.in);
 
-        // Display result
-        System.out.println("\nSorted Bogie Names:");
-        System.out.println(Arrays.toString(bogieNames));
+        System.out.print("Enter Bogie ID to search: ");
+        String key = sc.nextLine();
+
+        boolean found = false;
+
+        // Linear Search
+        for (String id : bogieIds) {
+            if (id.equals(key)) {
+                found = true;
+                break;
+            }
+        }
+
+        // Output
+        if (found) {
+            System.out.println("Bogie FOUND ✅");
+        } else {
+            System.out.println("Bogie NOT FOUND ❌");
+        }
     }
 }
