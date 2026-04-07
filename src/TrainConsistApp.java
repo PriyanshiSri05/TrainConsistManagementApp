@@ -7,12 +7,20 @@ public class TrainConsistApp {
         // Welcome message
         System.out.println("=== Train Consist Management App ===");
 
-        // Initialize empty train consist
-        List<String> bogies = new ArrayList<>();
+        // UC7: Create list of Bogie objects
+        List<Bogie> bogies = new ArrayList<>();
 
-        // Display initial bogie count
-        System.out.println("Initial bogie count: " + bogies.size());
+        bogies.add(new Bogie("Sleeper", 72));
+        bogies.add(new Bogie("AC Chair", 56));
+        bogies.add(new Bogie("First Class", 24));
 
-        // Program continues...
+        // Sort using Comparator
+        bogies.sort(Comparator.comparingInt(b -> b.capacity));
+
+        // Display result
+        System.out.println("\nSorted Bogies by Capacity:");
+        for (Bogie b : bogies) {
+            System.out.println(b);
+        }
     }
 }
